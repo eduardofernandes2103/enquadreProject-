@@ -1,8 +1,10 @@
+import { AuthProvider } from "./providers/auth";
+
 function App() {
   return (
-    <div>
+    <AuthProvider>
       teste inicial
-    </div>
+    </AuthProvider>
   );
 }
 
