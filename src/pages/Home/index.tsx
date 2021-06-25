@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom'
 import { Container, PlaceHome, ButtonPlace } from './styles'
+import { useHistory } from 'react-router'
 
 const Home = () =>{
+    const history = useHistory();
+
+    const handleRedirection = (path: string) => {
+        return history.push(path)
+    }
+
+
     return (
                 <Container>
                     
@@ -11,8 +19,8 @@ const Home = () =>{
                     </PlaceHome>
 
                     <ButtonPlace>
-                        <button>Login</button>
-                        <button>Signup</button>
+                        <button onClick={() => handleRedirection('/login')}>Login</button>
+                        <button onClick={() => handleRedirection('/signup')}>Signup</button>
                     </ButtonPlace>
 
                     <div className="redirectPlace">
