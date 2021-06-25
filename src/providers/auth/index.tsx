@@ -1,13 +1,51 @@
-import React, { createContext } from 'react';
+import { createContext, ReactNode, Dispatch, SetStateAction, useContext, useState } from "react";
+import { useHistory } from 'react-router-dom'
+import { History } from 'history'
+// import api from "../../services/api";
 
-const AuthContext = createContext({});
+interface AuthProviderProps {
+    children: ReactNode;
+}
 
-export const AuthProvider: React.FC = ({children}) => {
-    return (
-        <AuthContext.Provider value={{signed: true}}>
-            {children}
-        </AuthContext.Provider>
-    );
+interface UserData{
+    username: string;
+    password: string;
+}
+
+const AuthContext = createContext<AuthProviderData>({} as AuthProviderData);
+
+interface AuthProviderData{
+    token: string;
+    setAuth: Dispatch<SetStateAction<string>>
+    signIn: (userData: UserData, setError: Dispatch<SetStateAction<boolean>>, history: History) => void;
+}
+
+export const AuthProvider = ({ 
+    children, 
+    }: AuthProviderProps ) => {
+  const token = localStorage.getItem("token") || "";
+
+  const [auth, setAuth] = useState(token);
+
+  const signIn = (
+                    userData: UserData, 
+                    setError: Dispatch<SetStateAction<boolean>>, 
+                    history: History) => {
+    api
+      .post("/sessions/", userData)
+      .then((response) => {
+        localStorage.setItem("token", response.data.access);
+        setAuth(response.data.access);
+        history.push("/dashboard");
+      })
+      .catch((err) => setError(true));
+  };
+
+  return (
+    <AuthContext.Provider value={{ token: auth, setAuth, signIn }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
-export default AuthContext;
+export const useAuth = () => useContext(AuthContext);
