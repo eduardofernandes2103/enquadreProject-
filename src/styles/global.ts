@@ -10,7 +10,7 @@ export default createGlobalStyle`
  }
 
  body {
-    background: #4E4A4A;
+    background: #373535;
     color: white;
     -webkit-font-smoothing: antialiased !important
   }
@@ -40,7 +40,7 @@ export default createGlobalStyle`
   button:hover {
     box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
     transition: 0.2s;
-    background-color: gray;
+    background-color: white;
     color: black;
   }
   

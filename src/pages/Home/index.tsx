@@ -1,23 +1,24 @@
 import { Link } from 'react-router-dom'
+import { Container, PlaceHome, ButtonPlace } from './styles'
 
 const Home = () =>{
     return (
-                <div>
+                <Container>
                     
-                    <div className="placeHome">
+                    <PlaceHome>
                         <h1>Enquadre</h1>
                         <h2>Transformando sua casa em Arte</h2>
-                    </div>
+                    </PlaceHome>
 
-                    <div className="buttonPlace">
+                    <ButtonPlace>
                         <button>Login</button>
                         <button>Signup</button>
-                    </div>
+                    </ButtonPlace>
 
                     <div className="redirectPlace">
                         <Link to='/store'> Ir direto Às Compras</Link>
                     </div>
-                </div>
+                </Container>
     )
 }
 
