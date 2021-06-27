@@ -7,22 +7,21 @@ interface CardValues {
     image: string;
     children: ReactNode;
     price: number;
-    onClick: () => void;
+    onClick?: () => void;
 
 }
 
 const CardOfProduct = ({ id, title, image, children, price, onClick }:
     CardValues) => {
     return (
-        <Card>
-            <div key={id}>
-                <figure><img src={image} alt="" width="100" height="100" ></img></figure>
+        <Card key={id}>
+        
+                <figure><img src={image} alt="" width="150" height="150" ></img></figure>
                 <p>{title}</p>
-                <hr />
-                <p>{price}</p>
+                <p>R$ {price}</p>
                 <button onClick={onClick}>{children}</button>
                 
-            </div>
+            
         </Card>
     )
 }

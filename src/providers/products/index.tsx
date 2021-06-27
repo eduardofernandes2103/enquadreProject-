@@ -27,11 +27,13 @@ export const ProductsProvider = ({children} : ProductProviderProps) => {
 
    
     const [products] = useState<Product[]>([
-        { id: 1, image: Django , title: "Django", price: 20.59},
-        { id: 2, image: PulpFiction , title: "Pulp Fiction", price: 20.59},
-        { id: 3, image: ClockWorkOrange , title: "Laranja Mecânica", price: 20.59},
-        { id: 4, image: GodFather , title: "O Poderoso Chefão", price: 20.59},
+        
+        { id: 1, image: PulpFiction , title: "Pulp Fiction", price: 20.59},
+        { id: 2, image: ClockWorkOrange , title: "Laranja Mecânica", price: 20.59},
+        { id: 3, image: GodFather , title: "O Poderoso Chefão", price: 20.59},
+        { id: 4, image: Django , title: "Django", price: 20.59},
         { id: 5, image: Shining , title: "O Iluminado", price: 20.59},
+
     ])
   
 
