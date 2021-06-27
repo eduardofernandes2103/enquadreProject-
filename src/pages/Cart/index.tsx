@@ -1,6 +1,6 @@
 import { useCart } from '../../providers/cart'
 import CardOfProduct from '../../components/CardOfProduct'
-import { Container, HeaderCart, ShoppingCart } from './styles'
+import { Container, HeaderCart, ShoppingCart, TextPlace } from './styles'
 import { Redirect, Link} from 'react-router-dom';
 
 interface Product {
@@ -8,12 +8,14 @@ interface Product {
     image?: string;
     title?: string;
     description?: string;
-    price?: number;
+    price?: any;
 }
 
 const Cart = () =>{
 
     const { cart } = useCart()
+
+    const subtotal= cart.reduce((product, acc) => acc.price + product, 0)
 
 
     return (
@@ -27,9 +29,13 @@ const Cart = () =>{
 
             </HeaderCart>
 
-            <h3> Esse é o seu carrinho de Compras</h3>
+            <TextPlace>
 
-            <p>R$ 0.00</p>
+                <h3> Esse é o seu carrinho de Compras</h3>
+
+                <p>Valor da compra: <b>R$ {subtotal}</b></p>
+
+            </TextPlace>
 
             <ShoppingCart>
                 {cart.map((product: Product)=>(

@@ -11,7 +11,7 @@ interface Products {
     image?: string;
     title?: string;
     description?: string;
-    price?: number;
+    price?: any;
 }
 
 interface CartProviderData{

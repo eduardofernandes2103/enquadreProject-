@@ -37,8 +37,19 @@ export const HeaderCart = styled.div`
 
 export const ShoppingCart = styled.div`
     width: 75%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     button{
         background: red;
+    }
+`
+
+export const TextPlace = styled.div`
+    b{
+        color: green;
     }
 `
