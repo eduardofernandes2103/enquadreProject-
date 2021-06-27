@@ -16,12 +16,15 @@ const Store = () =>{
 
     const { products } = useProducts();
 
-    const { addToCart } = useCart();
+    const { addToCart, cart } = useCart();
+
+    const subtotal= cart.reduce((product, acc) => acc.price + product, 0)
     
     return (
         <div>
         
             <CartPlace>
+                <p><b>R$ {subtotal}</b></p>
                 <Link to="/cart"><div className="icon"><FaShoppingCart /></div></Link>
             </CartPlace>
 

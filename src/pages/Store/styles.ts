@@ -31,5 +31,11 @@ export const CartPlace = styled.div`
     .icon{
         color: #00cc00;
     }
+
+    p{
+        font-size: 1.5rem;
+        margin: 0.4rem;
+        color: green;
+    }
     
 `

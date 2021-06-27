@@ -13,7 +13,7 @@ interface Product {
 
 const Cart = () =>{
 
-    const { cart } = useCart()
+    const { cart, deleteToCart } = useCart()
 
     const subtotal= cart.reduce((product, acc) => acc.price + product, 0)
 
@@ -46,6 +46,7 @@ const Cart = () =>{
                                         image={product.image}
                                         price={product.price}
                                         children="Remover"
+                                        click={() => deleteToCart(product)}
                                     />
 
                                 ))}
