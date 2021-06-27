@@ -57,10 +57,10 @@ const Signup = () =>{
         api
         .post("/users/", user)
         .then((_) => {
-            alert(`Thank's for subscribing!`)
+            alert(`Obrigado por cadastrar-se!`)
             return history.push('/login')
         })
-        .catch((_)=> alert("Something went wrong, try again!"))
+        .catch((_)=> alert("Algo não está certo, tente novamente!"))
     }
 
     // const onSub = handleSubmit(onSubFunction);
@@ -77,7 +77,9 @@ const Signup = () =>{
 
             <div>
                 <form onSubmit={handleSubmit(onSubFunction)}>
+
                     <div className="inputPlace">
+
                         <input 
                                 placeholder="Defina um nome de Usuário" 
                                 {...register("username")}
@@ -114,11 +116,13 @@ const Signup = () =>{
                                 name="passwordConfirm"
                         />
                         <span>{errors.passwordConfirm?.message}</span>
+
                     </div>      
 
                     <div>
                         <button type="submit" >Enviar</button>
                     </div>
+                    
                 </form>
             </div>
 
