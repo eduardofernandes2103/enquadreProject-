@@ -8,26 +8,32 @@ interface CartProviderProps {
 
 interface Products {
     id?: number;
-    image: string;
-    title: string;
-    description: string;
-    price: number;
+    image?: string;
+    title?: string;
+    description?: string;
+    price?: number;
 }
 
 interface CartProviderData{
+    addToCart: (products: Products) => void;
     cart: Products[];
     setCart: Dispatch<SetStateAction<Products[]>>;
 }
 
 export const CartProvider = ({ children, }: CartProviderProps) => {
+
   const [cart, setCart] = useState<Products[]>([] as Products[]);
+
+  const addToCart = (products: Products) => {
+    setCart([...cart, products])
+  }
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
   return (
-    <CartContext.Provider value={{ cart, setCart }}>
+    <CartContext.Provider value={{ addToCart, cart, setCart }}>
       {children}
     </CartContext.Provider>
   );
