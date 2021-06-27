@@ -101,7 +101,7 @@ const Login = () =>{
             </div>
 
             <div>
-                <p>Ainda não me cadastrei! </p><Link to='/signup'>Login </Link>
+                <p>Ainda não me cadastrei! </p><Link to='/signup'>Sign Up </Link>
             </div>
             
         </Container>
