@@ -11,7 +11,7 @@ export const Card = styled.div`
     border: none;
     border-radius: 5px;
     padding: 0.5rem;
-    width: 70%;
+    width: 75%;
     transition: 0.5s;
     margin: 0.5rem;
     height: 15rem;
