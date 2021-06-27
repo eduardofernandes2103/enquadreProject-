@@ -9,9 +9,9 @@ import { Container } from './styles'
 interface SignupProps{
     username: string;
     email: string;
-    confirmEmail: string;
+    confirmEmail?: string;
     password: string;
-    passwordConfirm: string;
+    passwordConfirm?: string;
 }
 
 const Signup = () =>{
@@ -35,7 +35,7 @@ const Signup = () =>{
             .string()
             .min(6)
             .required("Senha obrigatória"),
-        confirmPassword: yup
+        passwordConfirm: yup
             .string()
             .oneOf([yup.ref("password")], "A senha não é a mesma")
             .required("Confirmação da senha é obrigatório"),
@@ -53,6 +53,7 @@ const Signup = () =>{
 
     const onSubFunction = ({username, email, password}: SignupProps) => {
         const user = {username, email, password};
+        console.log("teste")
         api
         .post("/users/", user)
         .then((_) => {
@@ -76,45 +77,47 @@ const Signup = () =>{
 
             <div>
                 <form onSubmit={handleSubmit(onSubFunction)}>
-                    <input 
-                            placeholder="Defina um nome de Usuário" 
-                            {...register("username")}
-                            name="username"
-                    />
-                    <span>{errors.username?.message}</span>
+                    <div className="inputPlace">
+                        <input 
+                                placeholder="Defina um nome de Usuário" 
+                                {...register("username")}
+                                name="username"
+                        />
+                        <span>{errors.username?.message}</span>
 
-                    <input 
-                            placeholder="Escolha o seu melhor e-mail" 
-                            {...register("email")}  
-                            name="email"  
-                    />
-                    <span>{errors.email?.message}</span>
+                        <input 
+                                placeholder="Escolha o seu melhor e-mail" 
+                                {...register("email")}  
+                                name="email"  
+                        />
+                        <span>{errors.email?.message}</span>
 
-                    <input 
-                            placeholder="Confirme o e-mail" 
-                            {...register("confirmEmail")}  
-                            name="confirmEmail"
-                    />
-                    <span>{errors.confirmEmail?.message}</span>
+                        <input 
+                                placeholder="Confirme o e-mail" 
+                                {...register("confirmEmail")}  
+                                name="confirmEmail"
+                        />
+                        <span>{errors.confirmEmail?.message}</span>
 
-                    <input 
-                            placeholder="Insira uma senha" 
-                            type="password"
-                            {...register("password")}  
-                            name="password" 
-                    />
-                    <span>{errors.password?.message}</span>
+                        <input 
+                                placeholder="Insira uma senha" 
+                                type="password"
+                                {...register("password")}  
+                                name="password" 
+                        />
+                        <span>{errors.password?.message}</span>
 
-                    <input 
-                            placeholder="Confirme a senha" 
-                            type="password" 
-                            {...register("passwordConfirm")} 
-                            name="passwordConfirm"
-                    />
-                    <span>{errors.passwordConfirm?.message}</span>      
+                        <input 
+                                placeholder="Confirme a senha" 
+                                type="password" 
+                                {...register("passwordConfirm")} 
+                                name="passwordConfirm"
+                        />
+                        <span>{errors.passwordConfirm?.message}</span>
+                    </div>      
 
                     <div>
-                        <button type="submit">Enviar</button>
+                        <button type="submit" >Enviar</button>
                     </div>
                 </form>
             </div>
