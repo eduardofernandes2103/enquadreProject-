@@ -19,3 +19,26 @@ export const Container = styled.div`
         margin: 1rem;
     }
 `
+
+export const HeaderCart = styled.div`
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+
+    button{
+        background: #00cc00;
+        margin-right: 2.5rem;
+    }
+
+`
+
+export const ShoppingCart = styled.div`
+    width: 75%;
+
+    button{
+        background: red;
+    }
+`
