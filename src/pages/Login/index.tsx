@@ -5,7 +5,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form'
 import api from '../../services/api'
 import { Container } from './styles'
-import { toast } from 'react-toastify';
 
 interface LoginProps{
     username: string;
@@ -48,11 +47,11 @@ const Login = () =>{
         .then((response) => {
             setAutorization(true)
             TokenLocalStorage(response.data.access)
-            toast.success(`Bem vindo ${username}!`)
+            alert(`Bem vindo ${username}!`)
         
             return history.push('/store')
         })
-        .catch((_)=> toast.error("Something went wrong, try again!"))
+        .catch((_)=> alert("Something went wrong, try again!"))
     };
 
 
