@@ -53,3 +53,13 @@ export const TextPlace = styled.div`
         color: green;
     }
 `
+
+export const LogoutPlace = styled.div`
+
+    margin: 4rem;
+
+    button{
+        background: red;
+        width: 6rem;
+    }
+`

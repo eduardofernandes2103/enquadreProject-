@@ -1,25 +1,20 @@
 import { useAuth } from '../../providers/auth'
-import { Redirect, useHistory, Link} from 'react-router-dom';
+import { useHistory, Link} from 'react-router-dom';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form'
 import api from '../../services/api'
 import { Container } from './styles'
-import { useState } from 'react'
+import { toast } from 'react-toastify';
 
 interface LoginProps{
     username: string;
     password: string;
 }
 
-interface AuthType{
-    authenticated: boolean;
-    setAuthenticated: boolean;
-}
-
 const Login = () =>{
 
-    // const authenticated = useAuth()
+    const { setAutorization } = useAuth()
     const history = useHistory();
 
 
@@ -51,17 +46,15 @@ const Login = () =>{
         api
         .post("/sessions/", user)
         .then((response) => {
+            setAutorization(true)
             TokenLocalStorage(response.data.access)
-            alert(`Bem vindo ${username}!`)
+            toast.success(`Bem vindo ${username}!`)
         
             return history.push('/store')
         })
-        .catch((_)=> alert("Something went wrong, try again!"))
+        .catch((_)=> toast.error("Something went wrong, try again!"))
     };
 
-    // if(authenticated) {
-    //                     return <Redirect to="/store"/>
-    // }
 
     return (
         <Container>

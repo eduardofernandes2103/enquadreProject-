@@ -16,7 +16,9 @@ const AuthContext = createContext<AuthProviderData>({} as AuthProviderData);
 
 interface AuthProviderData{
     token: string;
+    autorization: boolean;
     setAuth: Dispatch<SetStateAction<string>>
+    setAutorization: Dispatch<SetStateAction<boolean>>
     signIn: (userData: UserData, setError: Dispatch<SetStateAction<boolean>>, history: History) => void;
 }
 
@@ -27,6 +29,8 @@ export const AuthProvider = ({
 
   const [auth, setAuth] = useState(token);
 
+  const [autorization, setAutorization] = useState(false)
+
   const signIn = (
                     userData: UserData, 
                     setError: Dispatch<SetStateAction<boolean>>, 
@@ -36,13 +40,14 @@ export const AuthProvider = ({
       .then((response) => {
         localStorage.setItem("token", response.data.access);
         setAuth(response.data.access);
-        history.push("/dashboard");
+        setAutorization(true)
+        history.push("/store");
       })
       .catch((err) => setError(true));
   };
 
   return (
-    <AuthContext.Provider value={{ token: auth, setAuth, signIn }}>
+    <AuthContext.Provider value={{ token: auth, autorization, setAuth, signIn, setAutorization }}>
       {children}
     </AuthContext.Provider>
   );

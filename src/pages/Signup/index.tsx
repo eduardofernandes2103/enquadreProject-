@@ -1,5 +1,4 @@
-import { useAuth } from '../../providers/auth'
-import { Redirect, useHistory, Link} from 'react-router-dom';
+import { useHistory, Link} from 'react-router-dom';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form'
@@ -15,7 +14,6 @@ interface SignupProps{
 }
 
 const Signup = () =>{
-    // const authenticated = useAuth()
 
     const formSchema = yup.object().shape({
         
@@ -62,12 +60,6 @@ const Signup = () =>{
         })
         .catch((_)=> alert("Algo não está certo, tente novamente!"))
     }
-
-    // const onSub = handleSubmit(onSubFunction);
-
-    // if(authenticated) {
-    //     return <Redirect to="/store"/>
-    // }
     
     return (
         <Container>

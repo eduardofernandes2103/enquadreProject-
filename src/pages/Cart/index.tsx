@@ -1,7 +1,8 @@
 import { useCart } from '../../providers/cart'
+import { useAuth } from '../../providers/auth'
 import CardOfProduct from '../../components/CardOfProduct'
-import { Container, HeaderCart, ShoppingCart, TextPlace } from './styles'
-import { Redirect, Link} from 'react-router-dom';
+import { Container, HeaderCart, ShoppingCart, TextPlace, LogoutPlace } from './styles'
+import { Redirect, Link, useHistory} from 'react-router-dom';
 
 interface Product {
     id?: number;
@@ -15,14 +16,27 @@ const Cart = () =>{
 
     const { cart, deleteToCart } = useCart()
 
+    const { autorization, setAutorization } = useAuth()
+
     const subtotal= cart.reduce((product, acc) => acc.price + product, 0)
 
+    const history = useHistory()
+
+    const handleLogout = () => {
+        setAutorization(false)
+        localStorage.clear()
+        return history.push('/')
+    }
+
+    if(!autorization) {
+                        return <Redirect to="/login"/>
+    }
 
     return (
         <Container>
 
             <HeaderCart>  
-
+                
                 <button>Pagar</button>
 
                 <Link to="/store">Voltar às compras</Link>
@@ -51,6 +65,11 @@ const Cart = () =>{
 
                                 ))}
             </ShoppingCart>
+
+            <LogoutPlace>
+                <button onClick={ () => handleLogout() }>Logout</button>
+            </LogoutPlace>
+
         </Container>
     )
 }
