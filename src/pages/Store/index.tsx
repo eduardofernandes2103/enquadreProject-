@@ -38,9 +38,10 @@ const Store = () =>{
                 <h2>Bem vindo!</h2>
                 <h3>Deixe a Arte entrar na sua casa</h3>
 
-                {products.map((product: Product)=>(
+                {products.map((product: Product, index: any)=>(
                                 
                                 <CardOfProduct 
+                                    key={index}
                                     id={product.id} 
                                     title={product.title}
                                     image={product.image}

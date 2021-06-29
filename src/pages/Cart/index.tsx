@@ -57,9 +57,10 @@ const Cart = () =>{
             </TextPlace>
 
             <ShoppingCart>
-                {cart.map((product: Product)=>(
+                {cart.map((product: Product, index: any)=>(
                                     
                                     <CardOfProduct 
+                                        key={index}
                                         id={product.id} 
                                         title={product.title}
                                         image={product.image}
