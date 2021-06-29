@@ -36,7 +36,7 @@ export const HeaderCart = styled.div`
 `
 
 export const ShoppingCart = styled.div`
-    width: 75%;
+    width: 100%;
     text-align: center;
     display: flex;
     flex-direction: column;
