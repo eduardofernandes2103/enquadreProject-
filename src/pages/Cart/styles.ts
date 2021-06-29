@@ -46,6 +46,11 @@ export const ShoppingCart = styled.div`
     button{
         background: red;
     }
+
+    @media (min-width: 720px){
+        display: flex;
+        flex-direction: row;
+    }
 `
 
 export const TextPlace = styled.div`
