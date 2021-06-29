@@ -5,6 +5,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form'
 import api from '../../services/api'
 import { Container } from './styles'
+import {toast, ToastContainer}  from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 
 interface LoginProps{
     username: string;
@@ -47,16 +50,17 @@ const Login = () =>{
         .then((response) => {
             setAutorization(true)
             TokenLocalStorage(response.data.access)
-            alert(`Bem vindo ${username}!`)
         
             return history.push('/store')
         })
-        .catch((_)=> alert("Something went wrong, try again!"))
+        .catch((_)=> toast.error("Tem algo errado, tente novamente!"))
     };
 
 
     return (
         <Container>
+            <ToastContainer />
+
             <h2>Login</h2>
 
             <div>
