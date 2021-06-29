@@ -4,6 +4,9 @@ import CardOfProduct from '../../components/CardOfProduct'
 import { Container, CartPlace } from './styles'
 import { FaShoppingCart } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import {ToastContainer}  from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 
 interface Product {
     id: number;
@@ -22,6 +25,8 @@ const Store = () =>{
     
     return (
         <div>
+
+            <ToastContainer />
         
             <CartPlace>
                 <p><b>R$ {subtotal}</b></p>

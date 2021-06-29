@@ -1,5 +1,6 @@
 import { createContext, SetStateAction, useContext, ReactNode, Dispatch, useEffect, useState } from "react";
-import { isSetAccessorDeclaration } from "typescript";
+import {toast}  from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const CartContext = createContext<CartProviderData>({} as CartProviderData);
 
@@ -28,6 +29,7 @@ export const CartProvider = ({ children, }: CartProviderProps) => {
 
   const addToCart = (products: Products) => {
     setCart([...cart, products])
+    toast.success("Item adicionado ao carrinho")
   }
 
   const deleteToCart = (productsDel: Products) => {
@@ -35,6 +37,7 @@ export const CartProvider = ({ children, }: CartProviderProps) => {
       (products) => products.id !== productsDel.id
     );
     setCart(newList)
+    toast.error('Item removido do Carrinho')
   }
 
   useEffect(() => {

@@ -3,6 +3,9 @@ import { useAuth } from '../../providers/auth'
 import CardOfProduct from '../../components/CardOfProduct'
 import { Container, HeaderCart, ShoppingCart, TextPlace, LogoutPlace } from './styles'
 import { Redirect, Link, useHistory} from 'react-router-dom';
+import {ToastContainer}  from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 
 interface Product {
     id?: number;
@@ -34,6 +37,8 @@ const Cart = () =>{
 
     return (
         <Container>
+
+            <ToastContainer />
 
             <HeaderCart>  
                 
