@@ -38,7 +38,7 @@ const Cart = () =>{
     return (
         <Container>
 
-            <ToastContainer />
+            <ToastContainer/>
 
             <HeaderCart>  
                 
