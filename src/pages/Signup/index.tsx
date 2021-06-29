@@ -4,6 +4,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form'
 import api from '../../services/api'
 import { Container } from './styles'
+import {toast, ToastContainer}  from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 interface SignupProps{
@@ -56,14 +58,15 @@ const Signup = () =>{
         api
         .post("/users/", user)
         .then((_) => {
-            alert(`Obrigado por cadastrar-se!`)
+            toast.success(`Obrigado por cadastrar-se!`)
             return history.push('/login')
         })
-        .catch((_)=> alert("Algo não está certo, tente novamente!"))
+        .catch((_)=> toast.error("Algo não está certo, tente novamente!"))
     }
     
     return (
         <Container>
+            <ToastContainer />
             <div>
                 <h2>SignUp</h2>
             </div>
